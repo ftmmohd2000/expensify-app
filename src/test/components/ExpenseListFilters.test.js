@@ -8,6 +8,7 @@ import { filters, altFilters } from '../fixtures/filters'
 let wrapper, setTextFilter, sortByDate, sortByAmount, setStartDate, setEndDate
 
 beforeEach(() => {
+  jest.spyOn(console, 'error').mockImplementation(() => { })
   setTextFilter = jest.fn()
   setStartDate = jest.fn()
   setEndDate = jest.fn()
