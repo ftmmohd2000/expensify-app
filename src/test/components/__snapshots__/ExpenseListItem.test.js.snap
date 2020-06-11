@@ -3,7 +3,7 @@
 exports[`Should render ExpenseListItem with data 1`] = `
 <div>
   <Link
-    to="/edit/1"
+    to="/edit/avuwxdyqaegjf"
   >
     <h3>
       books

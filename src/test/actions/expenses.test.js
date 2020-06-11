@@ -1,7 +1,16 @@
 import configureMockStore from 'redux-mock-store'
 import thunk from 'redux-thunk'
 import database from '../../firebase/firebase'
-import { startAddExpense, addExpense, editExpense, removeExpense, setExpenses, startSetExpenses } from '../../actions/expenses'
+import {
+  startAddExpense,
+  addExpense,
+  startEditExpense,
+  editExpense,
+  startRemoveExpense,
+  removeExpense,
+  setExpenses,
+  startSetExpenses
+} from '../../actions/expenses'
 import expenses from '../fixtures/expenses'
 
 const createMockStore = configureMockStore([thunk])
@@ -22,14 +31,54 @@ test('should set up remove expense action object', () => {
   })
 })
 
+test('should delete expense from database and store', (done) => {
+  const store = createMockStore({})
+  const id = expenses[2].id
+  store.dispatch(startRemoveExpense({ id }))
+    .then(() => {
+      const actions = store.getActions()
+      expect(actions[0]).toEqual({
+        type: 'REMOVE_EXPENSE',
+        id
+      })
+      return database.ref(`expenses/${id}`).once('value')
+    }).then((snapshot) => {
+      expect(snapshot.val()).toBeFalsy()
+      done()
+    })
+})
+
 test('should set up edit expense action object', () => {
-  const action = editExpense(56, { note: 'I want to kill Krish' })
+  const action = editExpense(56, { note: 'I want to punch Krish' })
   expect(action).toEqual({
     type: 'EDIT_EXPENSE',
     id: 56,
     updates: {
-      note: 'I want to kill Krish'
+      note: 'I want to punch Krish'
     }
+  })
+})
+
+test('should edit expense in database and store', (done) => {
+  const store = createMockStore({})
+  const updates = {
+    amount: 1,
+    description: 'afera',
+    note: 'qr43er',
+    createdAt: 4535
+  }
+  const id = expenses[0].id
+  store.dispatch(startEditExpense(id, updates)).then(() => {
+    const actions = store.getActions()
+    expect(actions[0]).toEqual({
+      type: 'EDIT_EXPENSE',
+      updates,
+      id
+    })
+    return database.ref(`expenses/${id}`).once('value')
+  }).then((snapshot) => {
+    expect(snapshot.val()).toEqual(updates)
+    done()
   })
 })
 

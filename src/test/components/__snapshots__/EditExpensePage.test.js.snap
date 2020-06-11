@@ -11,7 +11,7 @@ exports[`should render EditExpensePage correctly 1`] = `
         "amount": 300,
         "createdAt": 86400000000,
         "description": "locks",
-        "id": "3",
+        "id": "c87865367ygfdSDXFGC",
         "note": "",
       }
     }
