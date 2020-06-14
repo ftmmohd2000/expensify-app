@@ -1,38 +1,92 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`should render ExpenseList with expenses 1`] = `
-<div>
-  <ExpenseListItem
-    amount={30000}
-    createdAt={0}
-    description="books"
-    id="avuwxdyqaegjf"
-    key="0"
-    note=""
-  />
-  <ExpenseListItem
-    amount={1}
-    createdAt={-345600000}
-    description="hooks"
-    id="bYCVUGFvutcwjygFXRtejCrDC"
-    key="1"
-    note=""
-  />
-  <ExpenseListItem
-    amount={300}
-    createdAt={86400000000}
-    description="locks"
-    id="c87865367ygfdSDXFGC"
-    key="2"
-    note=""
-  />
+<div
+  className="content-container"
+>
+  <div
+    className="list-header"
+  >
+    <div
+      className="show-for-mobile"
+    >
+      Expenses
+    </div>
+    <div
+      className="show-for-desktop"
+    >
+      Expense
+    </div>
+    <div
+      className="show-for-desktop"
+    >
+      Amount
+    </div>
+  </div>
+  <div
+    className="list-body"
+  >
+    <ExpenseListItem
+      amount={30000}
+      createdAt={0}
+      description="books"
+      id="avuwxdyqaegjf"
+      key="avuwxdyqaegjf"
+      note=""
+    />
+    <ExpenseListItem
+      amount={1}
+      createdAt={-345600000}
+      description="hooks"
+      id="bYCVUGFvutcwjygFXRtejCrDC"
+      key="bYCVUGFvutcwjygFXRtejCrDC"
+      note=""
+    />
+    <ExpenseListItem
+      amount={300}
+      createdAt={86400000000}
+      description="locks"
+      id="c87865367ygfdSDXFGC"
+      key="c87865367ygfdSDXFGC"
+      note=""
+    />
+  </div>
 </div>
 `;
 
 exports[`should render ExpenseList with no expenses 1`] = `
-<div>
-  <p>
-    No Expenses
-  </p>
+<div
+  className="content-container"
+>
+  <div
+    className="list-header"
+  >
+    <div
+      className="show-for-mobile"
+    >
+      Expenses
+    </div>
+    <div
+      className="show-for-desktop"
+    >
+      Expense
+    </div>
+    <div
+      className="show-for-desktop"
+    >
+      Amount
+    </div>
+  </div>
+  <div
+    className="list-body"
+  >
+    <div
+      className="list-item list-item--message"
+    >
+      <span>
+        No Expenses
+      </span>
+    </div>
+  </div>
 </div>
 `;
